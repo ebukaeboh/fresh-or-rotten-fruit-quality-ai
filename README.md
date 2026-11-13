@@ -1,28 +1,42 @@
-# Fresh-or-Rotten — AI That Checks Fruit Quality
+# 🍎 Fresh-or-Rotten Fruit Quality AI
 
-AI that checks if fruit is fresh or rotten from a photo using Python & Machine Learning.
+An AI model that checks a photo of a fruit and predicts whether it is **Fresh** or **Rotten**.
 
-### What it does
+Built with Python, TensorFlow, and Transfer Learning. This project helps reduce food waste by quickly checking fruit quality from a photo.
+
+---
+
+## 🎯 What It Does
+
 - Upload a photo of a fruit
-- The AI predicts: Fresh or Rotten
-- Helps reduce food waste and check quality before buying or selling
+- The AI analyses the photo
+- It returns a prediction: **FRESH** or **ROTTEN**
+- It also shows a confidence score from 0 to 1
 
-### How it works
-1. Dataset of fresh and rotten fruit images
-2. Train a Machine Learning model with Python
-3. Model learns the difference between fresh and rotten
-4. Test with new fruit photos
+Example:
+- Score `0.448` → **FRESH** (below 0.5)
+- Score `0.750` → **ROTTEN** (above 0.5)
 
-### Tech Used
-Python | Machine Learning | Git & GitHub
+---
 
-### How to Run
-1. Clone this repo
-2. Install requirements: pip install -r requirements.txt
-3. Run the Python file
-4. Test with a fruit photo
+## 🧠 How It Works
 
-### Future Improvements
-- Add more fruits
-- Add a web app to upload photos
-- Improve accuracy with more images
+1. **Data Collection:** Fruit photos are organised into 2 folders:
+   - `data/fresh/` - photos of fresh fruit
+   - `data/rotten/` - photos of rotten fruit
+
+2. **Model:** MobileNetV2 (pre-trained on ImageNet)
+   - The base layers are frozen to keep what it already knows
+   - A new classification head is added on top for Fresh vs Rotten
+
+3. **Training:**
+   - Image size: 224 x 224
+   - Epochs: 3
+   - Optimizer: Adam
+   - Loss: Binary Crossentropy
+
+4. **Testing:** The model is tested on a new photo it has not seen before and predicts Fresh or Rotten.
+
+---
+
+## 📁 Project Structure
